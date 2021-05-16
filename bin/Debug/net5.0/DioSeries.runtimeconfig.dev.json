@@ -1,8 +1,0 @@
-{
-  "runtimeOptions": {
-    "additionalProbingPaths": [
-      "C:\\Users\\Allzon\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Allzon\\.nuget\\packages"
-    ]
-  }
-}
