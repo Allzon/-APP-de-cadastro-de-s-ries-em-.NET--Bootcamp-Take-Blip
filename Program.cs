@@ -1,4 +1,6 @@
-﻿using System;
+using System;
+using System.IO;
+using System.Text;
 
 namespace DioSeries
 {
@@ -28,6 +30,9 @@ namespace DioSeries
 					case "5":
 						VisualizarSerie();
 						break;
+					case "6":
+						SalvarEmArquivo();
+						break;
 					default:
 						throw new ArgumentOutOfRangeException();
 				}
@@ -38,6 +43,27 @@ namespace DioSeries
 			Console.WriteLine("Obrigado por utilizar nossos serviços.");
 			Console.ReadLine();
         }
+
+		private static void SalvarEmArquivo()
+		{
+			StreamWriter serieArq = new StreamWriter("ListaSalva.txt");
+			for(int i = 0;i < repositorio.Lista().Count; i++)
+			{
+				var serieDetalhes = repositorio.RetornaPorId(i);
+				serieArq.WriteLine("Id:"+ i);
+				serieArq.WriteLine(serieDetalhes);
+				serieArq.WriteLine();
+			}
+			serieArq.Close();
+
+			Console.WriteLine("Arquivo Criado na como \"ListaSalva.txt\"");
+			Console.ReadKey();
+		}
+
+		private static void RecuperarSeries()
+		{
+			StreamReader serieArq = new StreamReader("ListaSalva.txt", Encoding.UTF8);
+		}
 
         private static void ExcluirSerie()
 		{
@@ -154,6 +180,7 @@ namespace DioSeries
 			Console.WriteLine("3- Atualizar série");
 			Console.WriteLine("4- Excluir série");
 			Console.WriteLine("5- Visualizar série");
+			Console.WriteLine("6- imprimir txt");
 			Console.WriteLine("X- Sair");
 			Console.WriteLine();
 
